@@ -46,8 +46,9 @@ const Services = () => {
         {services.map((service, index) => (
           <div
             key={index}
-            className={`col-6 col-md-4 col-lg-2 ${index === 0 ? 'border-start' : ''} border-end wow fadeInUp`}
-            data-wow-delay={service.delay}
+            className={`col-6 col-md-4 col-lg-2 ${index === 0 ? 'border-start' : ''} border-end`}
+            animationClass="fadeInUp" delay={service.delay}
+        
           >
             <div className="p-4">
               <div className="d-flex align-items-center">

@@ -1,9 +1,10 @@
 import React from 'react';
+import WowAnimation from '../../common/Animation/WowAnimation';
 
 const ProductCard = ({ product, delay }) => {
   return (
     <div className="col-md-6 col-lg-4 col-xl-3">
-      <div className="product-item rounded wow fadeInUp" data-wow-delay={delay}>
+      <div className="product-item rounded " animationClass="fadeInUp" delay={delay}>
         <div className="product-item-inner border rounded">
           <div className="product-item-inner-item">
             <img src={product.image} className="img-fluid w-100 rounded-top" alt="" />

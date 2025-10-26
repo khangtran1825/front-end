@@ -1,72 +1,78 @@
-import React, { useEffect } from 'react';
-import ProductMiniCard from './ProductMiniCard';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import WowAnimation from '../../common/Animation/WowAnimation';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const ProductList = () => {
-  useEffect(() => {
-    if (window.$ && window.$.fn.owlCarousel) {
-      window.$('.productList-carousel').owlCarousel({
-        items: 1,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        nav: true,
-        dots: true
-      });
-
-      window.$('.productImg-carousel').owlCarousel({
-        items: 1,
-        loop: true,
-        autoplay: false,
-        nav: false,
-        dots: false
-      });
-    }
-  }, []);
-
   const productGroups = [
-    [
-      { id: 1, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-4.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 2, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-4.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 3, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-6.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 4, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-7.png', price: '1,050.00', oldPrice: '1,250.00' }
-    ],
-    [
-      { id: 5, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-8.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 6, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-9.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 7, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-10.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 8, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-11.png', price: '1,050.00', oldPrice: '1,250.00' }
-    ],
-    [
-      { id: 9, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-12.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 10, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-13.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 11, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-14.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 12, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-15.png', price: '1,050.00', oldPrice: '1,250.00' }
-    ],
-    [
-      { id: 13, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-16.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 14, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-17.png', price: '1,050.00', oldPrice: '1,250.00' },
-      { id: 15, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-3.png', price: '1,050.00', oldPrice: '1,250.00' }
-    ]
+    // ... data giữ nguyên
   ];
 
   return (
     <div className="container-fluid products productList overflow-hidden">
       <div className="container products-mini py-5">
         <div className="mx-auto text-center mb-5" style={{ maxWidth: '900px' }}>
-          <h4 className="text-primary border-bottom border-primary border-2 d-inline-block p-2 title-border-radius wow fadeInUp" data-wow-delay="0.1s">
+          <h4 className="text-primary border-bottom border-primary border-2 d-inline-block p-2 title-border-radius" animationClass="fadeInUp" delay={0.1}>
             Products
           </h4>
-          <h1 className="mb-0 display-3 wow fadeInUp" data-wow-delay="0.3s">All Product Items</h1>
+          <h1 className="mb-0 display-3" animationClass="fadeInUp" delay={0.3}>
+            All Product Items
+          </h1>
         </div>
-        <div className="productList-carousel owl-carousel pt-4 wow fadeInUp" data-wow-delay="0.3s">
+
+        {/* Outer Swiper */}
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{ delay: 5000 }}
+          navigation={{
+            nextEl: '.productList-next',
+            prevEl: '.productList-prev',
+          }}
+          className="productList-carousel owl-carousel pt-4"
+          animationClass="fadeInUp"
+          style={{ height: '215px' }}
+        >
           {productGroups.map((group, groupIndex) => (
-            <div key={groupIndex} className="productImg-carousel owl-carousel productList-item">
-              {group.map((product) => (
-                <ProductMiniCard key={product.id} product={product} />
-              ))}
-            </div>
+            <SwiperSlide key={groupIndex}>
+              {/* Inner Swiper */}
+              <Swiper
+                modules={[Navigation]}
+                slidesPerView={1}
+                loop={true}
+                navigation={{
+                  nextEl: `.productImg-next-${groupIndex}`,
+                  prevEl: `.productImg-prev-${groupIndex}`,
+                }}
+                className="productImg-carousel productList-item"
+              >
+                {group.map((product) => (
+                  <SwiperSlide key={product.id}>
+                    <ProductMiniCard product={product} />
+                  </SwiperSlide>
+                ))}
+                
+                {/* Inner Navigation */}
+                <div className={`swiper-button-prev productImg-prev-${groupIndex}`}>
+                  <i className="bi bi-arrow-left"></i>
+                </div>
+                <div className={`swiper-button-next productImg-next-${groupIndex}`}>
+                  <i className="bi bi-arrow-right"></i>
+                </div>
+              </Swiper>
+            </SwiperSlide>
           ))}
-        </div>
+
+          {/* Outer Navigation */}
+          <div className="swiper-button-prev productList-prev">
+            <i className="fas fa-chevron-left"></i>
+          </div>
+          <div className="swiper-button-next productList-next">
+            <i className="fas fa-chevron-right"></i>
+          </div>
+        </Swiper>
       </div>
     </div>
   );

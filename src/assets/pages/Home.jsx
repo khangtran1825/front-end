@@ -13,6 +13,7 @@ import BestsellerProducts from '../components/home/Bestseller/BestsellerProducts
 import Footer from '../components/layout/Footer/Footer';
 import Copyright from '../components/layout/Copyright/Copyright';
 import BackToTop from '../components/common/BackToTop/BackToTop';
+import '../styles/css/style.css';
 
 const Home = () => {
   return (
