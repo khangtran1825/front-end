@@ -18,18 +18,27 @@ const BestsellerProducts = () => {
     <div className="container-fluid products pb-5">
       <div className="container products-mini py-5">
         <div className="mx-auto text-center mb-5" style={{ maxWidth: '700px' }}>
-          <h4 className="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius" animationClass="fadeInUp" delay={0.1}>
-            Bestseller Products
-          </h4>
-          <p className="mb-0" animationClass="fadeInUp" delay={0.2}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, asperiores ducimus sint quos tempore officia similique quia? Libero, pariatur consectetur?
-          </p>
+          <WowAnimation animationClass="fadeInUp" delay={0.1}>
+            <h4 className="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+              Bestseller Products
+            </h4>
+          </WowAnimation>
+          <WowAnimation animationClass="fadeInUp" delay={0.2}>
+            <p className="mb-0">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit...
+            </p>
+          </WowAnimation>
         </div>
         <div className="row g-4">
           {products.map((product, index) => (
-            <div key={product.id} className="col-md-6 col-lg-6 col-xl-4" animationClass="fadeInUp" delay={delays[index]}>
+            <WowAnimation
+              key={product.id}
+              className="col-md-6 col-lg-6 col-xl-4"
+              animationClass="fadeInUp"
+              delay={parseFloat(delays[index])}
+            >
               <ProductMiniCard product={product} />
-            </div>
+            </WowAnimation>
           ))}
         </div>
       </div>
