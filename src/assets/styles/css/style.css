@@ -299,7 +299,15 @@
 .product .product-item {
     width: 100%;
     height: 100%;
-    position: relative;
+    position: relative; /* Giữ nguyên hoặc thêm nếu chưa có */
+    z-index: 1; /* Thêm z-index cơ bản */
+    transition: transform 0.3s ease, z-index 0s ease 0.3s; /* Thêm transition cho z-index */
+}
+
+.product .product-item:hover {
+    z-index: 100; /* Quan trọng: Nâng thẻ đang hover lên */
+    transition: transform 0.3s ease, z-index 0s ease 0s; /* Z-index thay đổi ngay */
+    /* Có thể thêm transform: translateY(-5px); nếu muốn hiệu ứng nâng nhẹ */
 }
 
 .product .product-item .product-item-inner {
@@ -313,14 +321,17 @@
     left: 0;
     opacity: 0;
     transition: 0.5s;
-    z-index: 1;
+    z-index: 99; /* Đảm bảo z-index cao bên trong thẻ cha */
+    background: var(--bs-white); /* Đảm bảo có nền trắng */
+    border-bottom-left-radius: 10px; /* Thêm nếu cần khớp bo góc */
+    border-bottom-right-radius: 10px;
 }
+
 
 .product .product-item:hover .product-item-add {
     background: var(--bs-white) !important;
     margin-bottom: -124px;
     opacity: 1;
-    z-index: 1;
 }
 .product .product-item:hover .product-item-inner {
     border-bottom: 0 !important;
@@ -495,15 +506,19 @@
 
 /*** bestseller Products Start ***/
 .products .products-mini .products-mini-item {
-    position: relative;
+    position: relative; /* Giữ nguyên hoặc thêm nếu chưa có */
     border-radius: 10px;
-    transition: 0.5s;
+    transition: 0.5s, z-index 0s ease 0.5s; /* Thêm transition cho z-index */
+    z-index: 1; /* Thêm z-index cơ bản */
 }
 
 .products .products-mini .products-mini-item:hover {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
+    z-index: 100; /* Quan trọng: Nâng thẻ đang hover lên */
+    border-bottom-left-radius: 0 !important; /* Giữ lại nếu có */
+    border-bottom-right-radius: 0 !important; /* Giữ lại nếu có */
+    transition: 0.5s, z-index 0s ease 0s; /* Z-index thay đổi ngay */
 }
+
 
 .products .products-mini .products-mini-item .products-mini-img {
  position: relative;
@@ -553,8 +568,11 @@
     justify-content: space-between;
     background: var(--bs-white);
     transition: 0.5s;
-    z-index: 9;
+    z-index: 99; /* Đảm bảo z-index cao bên trong thẻ cha */
     opacity: 0;
+    border-bottom-left-radius: 10px; /* Thêm nếu cần khớp bo góc */
+    border-bottom-right-radius: 10px; /* Thêm nếu cần khớp bo góc */
+    padding: 1rem; /* Đảm bảo có padding */
 }
 
 .products .products-mini .products-mini-item:hover .products-mini-add {
