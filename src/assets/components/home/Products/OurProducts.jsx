@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import ProductCard from './ProductCard'; // Đảm bảo đường dẫn import đúng
 import WowAnimation from '../../common/Animation/WowAnimation'; // Đảm bảo đường dẫn import đúng
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const OurProducts = () => {
   const [activeTab, setActiveTab] = useState('tab-1');
@@ -15,14 +17,16 @@ const OurProducts = () => {
     { id: 5, name: 'Camera Polaroid', category: 'Camera', image: 'img/product-7.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4, badge: 'Sale' },
     { id: 6, name: 'Headphone Sony', category: 'Headphone', image: 'img/product-8.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4 },
     { id: 7, name: 'Desktop Set Apple', category: 'Desktop', image: 'img/product-9.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4, badge: 'New' },
-    { id: 8, name: 'iPhone Stack', category: 'SmartPhone', image: 'img/product-10.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4, badge: 'Sale' }
+    { id: 8, name: 'iPhone Stack', category: 'SmartPhone', image: 'img/product-10.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4, badge: 'Sale' },
+    
   ];
 
   const newArrivals = [ // Ví dụ dữ liệu
     { id: 9, name: 'New Arrival 1', category: 'Camera', image: 'img/product-3.png', price: '1,150.00', oldPrice: '1,350.00', rating: 5, badge: 'New' },
     { id: 10, name: 'New Arrival 2', category: 'Laptop', image: 'img/product-11.png', price: '950.00', oldPrice: '1,150.00', rating: 4, badge: 'New' },
     { id: 11, name: 'New Arrival 3', category: 'Watch', image: 'img/product-2.png', price: '350.00', oldPrice: '450.00', rating: 4, badge: 'New' },
-    { id: 12, name: 'New Arrival 4', category: 'Headphone', image: 'img/product-8.png', price: '250.00', oldPrice: '350.00', rating: 5, badge: 'New' }
+    { id: 12, name: 'New Arrival 4', category: 'Headphone', image: 'img/product-8.png', price: '250.00', oldPrice: '350.00', rating: 5, badge: 'New' },
+    
   ];
 
   const featured = [ // Ví dụ dữ liệu
@@ -46,7 +50,8 @@ const OurProducts = () => {
     { id: 'tab-4', label: 'Top Selling', products: topSelling }
   ];
 
-  const delays = [0.1, 0.3, 0.5, 0.7, 0.1, 0.3, 0.5, 0.7]; // Delay values in seconds
+  const delays = [0.1, 0.3, 0.5, 0.7, 0.1, 0.3, 0.5, 0.7]; // Delay values in seconds\
+  const MAX_PRODUCTS_TO_SHOW = 12;
 
   return (
     <div className="container-fluid product py-5"> 
@@ -79,7 +84,7 @@ const OurProducts = () => {
               <div key={tab.id} className={`tab-pane fade ${activeTab === tab.id ? 'show active' : ''} p-0`}>
                 <div className="row g-4">
                   {/* Kiểm tra nếu tab.products tồn tại và là mảng */}
-                  {Array.isArray(tab.products) && tab.products.map((product, index) => (
+                  {Array.isArray(tab.products) && tab.products.slice(0, MAX_PRODUCTS_TO_SHOW).map((product, index) => (
                     <WowAnimation
                       key={product.id}
                       animationClass="fadeInUp"

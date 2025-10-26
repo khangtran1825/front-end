@@ -425,6 +425,14 @@
 
 
 /*** ProductList Categories Start ***/
+.productList-carousel {
+    position: relative;
+    padding-bottom: 350px;
+}
+.productList-carousel .swiper-slide{
+    height: auto;
+}
+
 .productList .productList-carousel {
     height: 215px !important;
 }
@@ -510,7 +518,11 @@
     border-radius: 10px;
     transition: 0.5s, z-index 0s ease 0.5s; /* Thêm transition cho z-index */
     z-index: 1; /* Thêm z-index cơ bản */
+    overflow: visible;
+    margin-bottom: 1rem;
 }
+
+
 
 .products .products-mini .products-mini-item:hover {
     z-index: 100; /* Quan trọng: Nâng thẻ đang hover lên */
@@ -924,18 +936,29 @@
 /* ProductList Carousel */
 .productList-carousel .swiper-button-prev,
 .productList-carousel .swiper-button-next {
-  top: -40px;
-  padding: 5px 40px;
-  width: auto;
-  height: auto;
+  top: auto; /* Reset top */
+  bottom: 10px; /* Đặt vị trí cách đáy 10px (điều chỉnh nếu cần) */
+
+  /* Có thể giữ hoặc sửa các style khác nếu muốn */
+  padding: 5px 10px; /* Giảm padding cho nút nhỏ hơn */
+  width: 40px;       /* Đặt chiều rộng cố định */
+  height: 40px;      /* Đặt chiều cao cố định */
+  border-radius: 50%; /* Làm tròn nút */
+  background: var(--bs-primary);
+  color: var(--bs-white);
+  transition: 0.5s;
 }
 
 .productList-carousel .swiper-button-prev {
-  left: 0;
+  left: calc(50% - 60px);
 }
 
 .productList-carousel .swiper-button-next {
-  right: 0;
+  right: calc(50% - 60px);
+}
+
+.product-list-container {
+    height: 300px;
 }
 
 /* Giữ animations từ animate.css */
