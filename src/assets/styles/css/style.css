@@ -317,9 +317,10 @@
 }
 
 .product .product-item:hover .product-item-add {
-    background: var(--bs-white);
+    background: var(--bs-white) !important;
     margin-bottom: -124px;
     opacity: 1;
+    z-index: 1;
 }
 .product .product-item:hover .product-item-inner {
     border-bottom: 0 !important;

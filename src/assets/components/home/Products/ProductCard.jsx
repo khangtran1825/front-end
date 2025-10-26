@@ -1,12 +1,17 @@
 import React from 'react';
-// Không cần import WowAnimation ở đây vì nó được dùng ở component cha
 
 const ProductCard = ({ product }) => {
+  // Kiểm tra xem product có tồn tại không trước khi truy cập thuộc tính
+  if (!product) {
+    return null; // Hoặc hiển thị một placeholder/thông báo lỗi
+  }
+
   return (
     <div className="product-item rounded">
       <div className="product-item-inner border rounded">
         <div className="product-item-inner-item">
-          <img src={`/${product.image}`} className="img-fluid w-100 rounded-top" alt={product.name || ""} />
+          {/* Sửa lại đường dẫn ảnh */}
+          <img src={`/${product.image}`} className="img-fluid w-100 rounded-top" alt={product.name || "Product image"} />
           {product.badge && (
             <div className={`product-${product.badge.toLowerCase()} position-absolute top-0 end-0 m-2 px-2 py-1 rounded-pill ${product.badge.toLowerCase() === 'sale' ? 'bg-danger text-white' : 'bg-primary text-white'}`} style={{fontSize: '0.8em'}}>
               {product.badge}
@@ -19,7 +24,8 @@ const ProductCard = ({ product }) => {
         <div className="text-center rounded-bottom p-4">
           <a href="#" className="d-block mb-2">{product.category}</a>
           <a href="#" className="d-block h4">{product.name}</a>
-          <del className="me-2 fs-5">${product.oldPrice}</del>
+          {/* Kiểm tra oldPrice trước khi hiển thị */}
+          {product.oldPrice && <del className="me-2 fs-5">${product.oldPrice}</del>}
           <span className="text-primary fs-5">${product.price}</span>
         </div>
       </div>
@@ -29,8 +35,9 @@ const ProductCard = ({ product }) => {
         </a>
         <div className="d-flex justify-content-between align-items-center">
           <div className="d-flex">
+            {/* Đảm bảo product.rating là số */}
             {[...Array(5)].map((_, i) => (
-              <i key={i} className={`fas fa-star ${i < product.rating ? 'text-primary' : 'text-muted'}`}></i>
+              <i key={i} className={`fas fa-star ${i < (product.rating || 0) ? 'text-primary' : 'text-muted'}`}></i>
             ))}
           </div>
           <div className="d-flex">
