@@ -1,61 +1,19 @@
 import React from 'react';
+import WowAnimation from '../../common/Animation/WowAnimation';
 
 const Footer = () => {
   const contactInfo = [
-    {
-      icon: 'fas fa-map-marker-alt',
-      title: 'Address',
-      content: '123 Street New York.USA'
-    },
-    {
-      icon: 'fas fa-envelope',
-      title: 'Mail Us',
-      content: 'info@example.com'
-    },
-    {
-      icon: 'fa fa-phone-alt',
-      title: 'Telephone',
-      content: '(+012) 3456 7890'
-    },
-    {
-      icon: 'fab fa-firefox-browser',
-      title: 'Yoursite@ex.com',
-      content: '(+012) 3456 7890'
-    }
+    { icon: 'fas fa-map-marker-alt', title: 'Address', content: '123 Street New York.USA' },
+    { icon: 'fas fa-envelope', title: 'Mail Us', content: 'info@example.com' },
+    { icon: 'fa fa-phone-alt', title: 'Telephone', content: '(+012) 3456 7890' },
+    { icon: 'fab fa-firefox-browser', title: 'Yoursite@ex.com', content: '(+012) 3456 7890' } // Giữ lại nội dung placeholder
   ];
-
-  const customerService = [
-    'Contact Us',
-    'Returns',
-    'Order History',
-    'Site Map',
-    'Testimonials',
-    'My Account',
-    'Unsubscribe Notification'
-  ];
-
-  const information = [
-    'About Us',
-    'Delivery infomation',
-    'Privacy Policy',
-    'Terms & Conditions',
-    'Warranty',
-    'FAQ',
-    'Seller Login'
-  ];
-
-  const extras = [
-    'Brands',
-    'Gift Vouchers',
-    'Affiliates',
-    'Wishlist',
-    'Order History',
-    'Track Your Order',
-    'Track Your Order'
-  ];
+  const customerService = [ 'Contact Us', 'Returns', 'Order History', 'Site Map', 'Testimonials', 'My Account', 'Unsubscribe Notification' ];
+  const information = [ 'About Us', 'Delivery infomation', 'Privacy Policy', 'Terms & Conditions', 'Warranty', 'FAQ', 'Seller Login' ];
+  const extras = [ 'Brands', 'Gift Vouchers', 'Affiliates', 'Wishlist', 'Order History', 'Track Your Order' ]; // Bỏ mục trùng
 
   return (
-    <div className="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+    <WowAnimation animationClass="fadeIn" delay={0.2} className="container-fluid footer py-5">
       <div className="container py-5">
         <div className="row g-4 rounded mb-5" style={{ background: 'rgba(255, 255, 255, .03)' }}>
           {contactInfo.map((info, index) => (
@@ -76,7 +34,7 @@ const Footer = () => {
           ))}
         </div>
         <div className="row g-5">
-          <div className="col-md-6 col-lg-6 col-xl-3">
+          <WowAnimation animationClass="fadeInUp" delay={0.3} className="col-md-6 col-lg-6 col-xl-3">
             <div className="footer-item d-flex flex-column">
               <div className="footer-item">
                 <h4 className="text-primary mb-4">Newsletter</h4>
@@ -98,40 +56,40 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-6 col-lg-6 col-xl-3">
-            <div className="footer-item d-flex flex-column">
-              <h4 className="text-primary mb-4">Customer Service</h4>
-              {customerService.map((item, index) => (
-                <a key={index} href="#" className="">
-                  <i className="fas fa-angle-right me-2"></i>{item}
-                </a>
-              ))}
+          </WowAnimation>
+           <WowAnimation animationClass="fadeInUp" delay={0.4} className="col-md-6 col-lg-6 col-xl-3">
+              <div className="footer-item d-flex flex-column">
+                <h4 className="text-primary mb-4">Customer Service</h4>
+                {customerService.map((item, index) => (
+                  <a key={index} href="#" className="mb-1 text-white-50">
+                    <i className="fas fa-angle-right me-2"></i>{item}
+                  </a>
+                ))}
+              </div>
+          </WowAnimation>
+           <WowAnimation animationClass="fadeInUp" delay={0.5} className="col-md-6 col-lg-6 col-xl-3">
+             <div className="footer-item d-flex flex-column">
+               <h4 className="text-primary mb-4">Information</h4>
+               {information.map((item, index) => (
+                 <a key={index} href="#" className="mb-1 text-white-50">
+                   <i className="fas fa-angle-right me-2"></i>{item}
+                 </a>
+               ))}
             </div>
-          </div>
-          <div className="col-md-6 col-lg-6 col-xl-3">
-            <div className="footer-item d-flex flex-column">
-              <h4 className="text-primary mb-4">Information</h4>
-              {information.map((item, index) => (
-                <a key={index} href="#" className="">
-                  <i className="fas fa-angle-right me-2"></i>{item}
-                </a>
-              ))}
-            </div>
-          </div>
-          <div className="col-md-6 col-lg-6 col-xl-3">
-            <div className="footer-item d-flex flex-column">
-              <h4 className="text-primary mb-4">Extras</h4>
-              {extras.map((item, index) => (
-                <a key={index} href="#" className="">
-                  <i className="fas fa-angle-right me-2"></i>{item}
-                </a>
-              ))}
-            </div>
-          </div>
+          </WowAnimation>
+          <WowAnimation animationClass="fadeInUp" delay={0.6} className="col-md-6 col-lg-6 col-xl-3">
+             <div className="footer-item d-flex flex-column">
+               <h4 className="text-primary mb-4">Extras</h4>
+               {extras.map((item, index) => (
+                 <a key={index} href="#" className="mb-1 text-white-50">
+                   <i className="fas fa-angle-right me-2"></i>{item}
+                 </a>
+               ))}
+             </div>
+          </WowAnimation>
         </div>
       </div>
-    </div>
+    </WowAnimation>
   );
 };
 

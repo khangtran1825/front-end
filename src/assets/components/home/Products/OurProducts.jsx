@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ProductCard from './ProductCard';
+import WowAnimation from '../../common/Animation/WowAnimation';
 
 const OurProducts = () => {
   const [activeTab, setActiveTab] = useState('tab-1');
@@ -16,25 +17,26 @@ const OurProducts = () => {
   ];
 
   const newArrivals = [
-    { id: 9, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-3.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4, badge: 'New' },
-    { id: 10, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-4.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4, badge: 'New' },
-    { id: 11, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-5.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4, badge: 'New' },
-    { id: 12, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-6.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4, badge: 'New' }
+    { id: 9, name: 'New Arrival 1', category: 'Camera', image: 'img/product-3.png', price: '1,150.00', oldPrice: '1,350.00', rating: 5, badge: 'New' },
+    { id: 10, name: 'New Arrival 2', category: 'Laptop', image: 'img/product-11.png', price: '950.00', oldPrice: '1,150.00', rating: 4, badge: 'New' },
+    { id: 11, name: 'New Arrival 3', category: 'Watch', image: 'img/product-2.png', price: '350.00', oldPrice: '450.00', rating: 4, badge: 'New' },
+    { id: 12, name: 'New Arrival 4', category: 'Headphone', image: 'img/product-8.png', price: '250.00', oldPrice: '350.00', rating: 5, badge: 'New' }
   ];
 
   const featured = [
-    { id: 13, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-9.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4 },
-    { id: 14, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-10.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4 },
-    { id: 15, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-11.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4 },
-    { id: 16, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-12.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4 }
+    { id: 13, name: 'Featured Product 1', category: 'Desktop Set', image: 'img/product-9.png', price: '1,550.00', oldPrice: '1,850.00', rating: 5 },
+    { id: 14, name: 'Featured Product 2', category: 'Smartphone', image: 'img/product-10.png', price: '850.00', oldPrice: '950.00', rating: 4 },
+    { id: 15, name: 'Featured Product 3', category: 'Laptop', image: 'img/product-11.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4 },
+    { id: 16, name: 'Featured Product 4', category: 'Monitor', image: 'img/product-12.png', price: '450.00', oldPrice: '550.00', rating: 4 }
   ];
 
   const topSelling = [
-    { id: 17, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-14.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4 },
-    { id: 18, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-15.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4 },
-    { id: 19, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-17.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4 },
-    { id: 20, name: 'Apple iPad Mini G2356', category: 'SmartPhone', image: 'img/product-16.png', price: '1,050.00', oldPrice: '1,250.00', rating: 4 }
+    { id: 17, name: 'Top Selling 1', category: 'Drone', image: 'img/product-14.png', price: '1,950.00', oldPrice: '2,250.00', rating: 5 },
+    { id: 18, name: 'Top Selling 2', category: 'Smartphone', image: 'img/product-15.png', price: '750.00', oldPrice: '850.00', rating: 4 },
+    { id: 19, name: 'Top Selling 3', category: 'Smartphone Case', image: 'img/product-17.png', price: '50.00', oldPrice: '70.00', rating: 4 },
+    { id: 20, name: 'Top Selling 4', category: 'Smartphone', image: 'img/product-16.png', price: '990.00', oldPrice: '1,190.00', rating: 5 }
   ];
+
 
   const tabs = [
     { id: 'tab-1', label: 'All Products', products: allProducts },
@@ -43,17 +45,17 @@ const OurProducts = () => {
     { id: 'tab-4', label: 'Top Selling', products: topSelling }
   ];
 
-  const delays = ['0.1s', '0.3s', '0.5s', '0.7s', '0.1s', '0.3s', '0.5s', '0.7s'];
+  const delays = [0.1, 0.3, 0.5, 0.7, 0.1, 0.3, 0.5, 0.7]; // Delay values in seconds
 
   return (
     <div className="container-fluid product py-5">
       <div className="container py-5">
         <div className="tab-class">
           <div className="row g-4">
-            <div className="col-lg-4 text-start wow fadeInLeft" data-wow-delay="0.1s">
+            <WowAnimation animationClass="fadeInLeft" delay={0.1} className="col-lg-4 text-start">
               <h1>Our Products</h1>
-            </div>
-            <div className="col-lg-8 text-end wow fadeInRight" data-wow-delay="0.1s">
+            </WowAnimation>
+            <WowAnimation animationClass="fadeInRight" delay={0.1} className="col-lg-8 text-end">
               <ul className="nav nav-pills d-inline-flex text-center mb-5">
                 {tabs.map((tab) => (
                   <li key={tab.id} className="nav-item mb-4">
@@ -67,18 +69,21 @@ const OurProducts = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </WowAnimation>
           </div>
           <div className="tab-content">
             {tabs.map((tab) => (
               <div key={tab.id} className={`tab-pane fade ${activeTab === tab.id ? 'show active' : ''} p-0`}>
                 <div className="row g-4">
                   {tab.products.map((product, index) => (
-                    <ProductCard
+                    <WowAnimation
                       key={product.id}
-                      product={product}
+                      animationClass="fadeInUp"
                       delay={delays[index % delays.length]}
-                    />
+                      className="col-md-6 col-lg-4 col-xl-3"
+                    >
+                      <ProductCard product={product} />
+                    </WowAnimation>
                   ))}
                 </div>
               </div>
