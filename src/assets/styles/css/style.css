@@ -955,3 +955,27 @@
 .fadeInRight {
   animation-name: fadeInRight;
 }
+
+/* Áp dụng cho Our Products: Target các cột */
+.product .row > div[class*="col-"]:hover { /* Target mọi cột trong .product > .row */
+    z-index: 100; /* Nâng toàn bộ cột đang hover lên trên tất cả các cột khác */
+    position: relative; /* Kích hoạt Stacking Context cho cột */
+}
+
+/* Áp dụng cho Bestseller Products: Target các cột */
+.products .products-mini .row > div[class*="col-"]:hover {
+    z-index: 100; /* Nâng toàn bộ cột đang hover lên */
+    position: relative;
+}
+
+.product .row > div[class*="col-"],
+.products .products-mini .row > div[class*="col-"] {
+    z-index: 1; /* Z-index cơ bản */
+    transition: transform 0.3s ease, z-index 0s ease 0.3s; /* Giữ transition */
+    position: relative; /* Cần thiết */
+}
+
+/* Ví dụ: Điều chỉnh lại quy tắc hover của thẻ con (đảm bảo không ghi đè z-index ngoài) */
+.product .product-item:hover {
+    transition: transform 0.3s ease; 
+}

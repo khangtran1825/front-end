@@ -49,7 +49,7 @@ const OurProducts = () => {
   const delays = [0.1, 0.3, 0.5, 0.7, 0.1, 0.3, 0.5, 0.7]; // Delay values in seconds
 
   return (
-    <div className="container-fluid product py-5"> {/* Thêm lớp 'product' */}
+    <div className="container-fluid product py-5"> 
       <div className="container py-5">
         <div className="tab-class">
           <div className="row g-4">
